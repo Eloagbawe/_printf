@@ -41,59 +41,40 @@ int handle_int_specifiers(int arg, char specifier) {
 }
 
 /**
- * _handle_c - handles the c specifier
- * @character: character to print
+ * handle_char_specifiers - handles int specifiers
+ * @str: string to print
+ * @specifier: indicated specifier
  * Return: num of characters printed
 */
 
-int _handle_c(int character) {
-  _putchar(character);
-  return(1);
-}
-
-/**
- * _handle_s - handles the s specifier
- * @string: string to print
- * Return: num of characters printed
-*/
-
-int _handle_s(char* string) {
-  if (string == NULL) {
-    return _printnull();
-  } else {
-    return _printstr(string);
+int handle_char_specifiers(char* str, char specifier) {
+  switch (specifier) {
+    case ('s'):
+      return _handle_s(str);
+      break;
+    case ('S'):
+      return _handle_S(str);
+      break;
+    default:
+      return (0);
+      break;
   }
 }
 
 /**
- * _handle_d - handles the d specifier
- * @num: number to print
+ * handle_long_int_specifiers - handles int specifiers
+ * @num: num to print
+ * @specifier: indicated specifier
  * Return: num of characters printed
 */
 
-int _handle_d(int num) {
-  if (num == 0) {
-    return _printzero();
-  } else {
-    int count = 0, *count_ptr = NULL;
-    count_ptr = &count;
-    return _printnum(num, count_ptr);
-  }
-}
-
-
-/**
- * _handle_i - handles the i specifier
- * @num: number to print
- * Return: num of characters printed
-*/
-
-int _handle_i(int num) {
-  if (num == 0) {
-    return _printzero();
-  } else {
-    int count = 0, *count_ptr = NULL;
-    count_ptr = &count; 
-    return _printnumbase(num, count_ptr, 10);
+int handle_long_int_specifiers(unsigned long int num, char specifier) {
+  switch (specifier) {
+    case ('p'):
+      return _handle_p(num);
+      break;
+    default:
+      return (0);
+      break;
   }
 }
