@@ -23,5 +23,7 @@ int _handle_o(int num);
 int _handle_x(int num);
 int _handle_X(int num);
 int handle_int_specifiers(int arg, char specifier);
-
+int check_non_printable(int c);
+int _printStr(const char *s);
+int _handle_S(char* string);
 #endif

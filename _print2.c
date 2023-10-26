@@ -1,4 +1,6 @@
+#include <unistd.h>
 #include "_printf.h"
+
 /**
  * _printnumbase- prints a number
  * @num: number to be printed
@@ -105,4 +107,38 @@ int _printHexa(long int num, int* i) {
       }
   }
   return *i;
+}
+
+/**
+ * _printStr - prints a string
+ * @s: string to be printed
+ * Return: number of chars printed
+*/
+
+int _printStr(const char *s) {
+  int i, len, extra = 0;
+  len = _strlen(s);
+
+  for (i = 0; i < len; i++) {
+
+    if (check_non_printable(s[i]) == 1) {
+      if (s[i] < 16) {
+        write(1, "\\x0", 3);
+        extra += 2;
+      } else {
+        write(1, "\\x", 2);
+        extra += 1;
+      }
+      
+      int count = 0, *count_ptr = NULL;
+      count_ptr = &count;
+      extra += _printHexa(s[i], count_ptr);
+      continue;
+    } else {
+      _putchar(s[i]);
+    }
+
+  }
+
+  return len + extra;
 }

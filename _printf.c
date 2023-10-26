@@ -18,6 +18,10 @@ int _printf(const char *format, ...) {
             printed_chars += _handle_s(va_arg(args, char *));
             i += 2;
           }
+          else if(format[i + 1] == 'S') {
+            printed_chars += _handle_S(va_arg(args, char *));
+            i += 2;
+          }
           else if (format[i + 1] == '%') {
             _putchar('%');
             printed_chars += 1;
