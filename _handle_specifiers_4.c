@@ -10,7 +10,6 @@
 
 int _handle_p(unsigned long int add) {
   int printed = 0;
-  // unsigned long int add = va_arg(args, unsigned long int);
   uintptr_t address_as_uint = (uintptr_t)add;
 
   printed += _printstr("0x");
